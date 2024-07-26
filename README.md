@@ -1,6 +1,6 @@
 #MovieApp
 
-Este projeto é uma aplicação ASP.NET Core que consome a API do The Movie Database (TMDb) para listar e exibir detalhes de filmes. Utilizando práticas como injeção de dependência, logging, gerenciamento de exceções e testes unitários.
+Este projeto é uma aplicação ASP.NET Core que consome a API do The Movie Database (TMDb) para listar e exibir detalhes de filmes. A aplicação utiliza Razor Pages com Bootstrap para montar a interface de usuário. Requisições para a API são feitas utilizando HttpClient. O projeto segue práticas recomendadas como injeção de dependência, logging, gerenciamento de exceções e testes unitários, e foi desenvolvido seguindo o padrão Clean Architecture, com uma clara separação entre Models, Services e Controllers.
 
 Índice
 
