@@ -1,18 +1,16 @@
 #MovieApp
 
-Este projeto é uma aplicação ASP.NET Core que consome a API do The Movie Database (TMDb) para listar e exibir detalhes de filmes. Utiliza práticas modernas de desenvolvimento, incluindo injeção de dependência, logging, e gerenciamento de exceções.
+Este projeto é uma aplicação ASP.NET Core que consome a API do The Movie Database (TMDb) para listar e exibir detalhes de filmes. Utilizando práticas como injeção de dependência, logging, gerenciamento de exceções e testes unitários.
 
 Índice
 
 - Visão Geral
 - Requisitos
-- Configuração
 - Uso
 - Logging
 - Gerenciamento de Exceções
 - Injeção de Dependências
 - Executando os Testes
-- Contribuição
 - Licença
 
 Visão Geral
@@ -26,33 +24,13 @@ Requisitos
 - .NET 8.0 SDK
 - Visual Studio 2022 ou mais recente com suporte para desenvolvimento ASP.NET
 
-Configuração
-
-API Key
-
-Você precisa de uma chave de API do The Movie Database (TMDb) para executar a aplicação. Siga os passos abaixo para configurar a chave de API:
-
-1. Obtenha uma chave de API:
-   - Vá para https://www.themoviedb.org/ e registre-se.
-   - Navegue até a seção de configurações da API para gerar uma chave de API.
-
-2. Configure a chave de API:
-   - Crie um arquivo appsettings.json na raiz do projeto com o seguinte conteúdo:
-
-     {
-       "ApiSettings": {
-         "ApiKey": "YOUR_API_KEY",
-         "BaseUrl": "https://api.themoviedb.org/3"
-       }
-     }
-
 Uso
 
 Iniciar a Aplicação
 
 1. Clone o repositório:
 
-   git clone https://github.com/seu-usuario/MovieApp.git
+   git clone https://github.com/viniciusesperandio/MovieTest.git
 
 2. Navegue até o diretório do projeto:
 
@@ -67,7 +45,7 @@ Iniciar a Aplicação
 
    dotnet run
 
-   A aplicação estará disponível em http://localhost:5000.
+   A aplicação estará disponível em http://localhost:7112.
 
 Logging
 
@@ -79,7 +57,7 @@ Exceções são gerenciadas usando middleware de exceção no ASP.NET Core. O pr
 
 Exemplo de Handler de Exceção
 
-app.UseExceptionHandler("/Home/Error");
+app.UseExceptionHandler(options => { });
 
 Injeção de Dependências
 
@@ -87,7 +65,12 @@ A aplicação utiliza a injeção de dependências do ASP.NET Core para gerencia
 
 Exemplo de Registro de Serviço
 
-services.AddHttpClient<IMovieService, MovieService>();
+builder.Services.AddHttpClient<IMovieService, MovieService>(client =>
+{
+    client.BaseAddress = new Uri(builder.Configuration["ApiSettings:BaseUrl"]);
+
+    client.DefaultRequestHeaders.Add("Authorization", $"Bearer {builder.Configuration["ApiSettings:ApiToken"]}");
+});
 
 Executando os Testes
 
@@ -103,10 +86,6 @@ Os testes são escritos usando xUnit e Moq. Para executar os testes, siga os pas
    dotnet test
 
    Os testes serão executados e o resultado será exibido no console.
-
-Contribuição
-
-Sinta-se à vontade para contribuir com melhorias, correções de bugs, ou novas funcionalidades. Por favor, siga o padrão de commits e crie uma pull request para que possamos revisar e integrar suas alterações.
 
 Licença
 
