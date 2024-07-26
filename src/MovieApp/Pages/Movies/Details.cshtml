@@ -1,0 +1,31 @@
+﻿@page "{id}"
+@model MovieApp.Pages.Movies.DetailsModel
+@{
+    ViewData["Title"] = "Detalhes do Filme";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-3">
+            <a href="/Movies" class="btn btn-primary mb-3">Voltar para a Lista</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <img src="@Model.Movie.FullPosterPath" class="img-fluid" alt="Poster do Filme">
+        </div>
+        <div class="col-md-8">
+            <h2>@Model.Movie.Title</h2>
+            <p><strong>Resumo:</strong> @Model.Movie.Overview</p>
+            <p><strong>Idioma Original:</strong> @Model.Movie.LanguageName</p>
+            <p><strong>Data de Lançamento:</strong> @Model.Movie.ReleaseDate.ToString("dd/MM/yyyy")</p>
+            <p><strong>Popularidade:</strong> @Model.Movie.Popularity</p>
+            <p><strong>Média de Votos:</strong> @Model.Movie.VoteAverage</p>
+            <p><strong>Contagem de Votos:</strong> @Model.Movie.VoteCount</p>
+            <p><strong>Adulto:</strong> @Model.Movie.AdultFormatted</p>
+            <p><strong>Gêneros:</strong> @string.Join(", ", Model.Movie.Genres.Select(g => g.Name))</p>
+        </div>
+    </div>
+</div>
