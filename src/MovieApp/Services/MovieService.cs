@@ -50,7 +50,7 @@ namespace MovieApp.Services
             if (!response.IsSuccessStatusCode)
             {
                 _logger.LogError("Erro ao buscar detalhes do filme: {StatusCode}", response.StatusCode);
-                throw new HttpRequestException($"Error fetching movie details: {response.StatusCode}");
+                throw new HttpRequestException($"Erro ao buscar detalhes do filme: {response.StatusCode}");
             }
 
             var content = await response.Content.ReadAsStringAsync();

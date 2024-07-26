@@ -26,13 +26,13 @@ namespace MovieApp.Controller
         {
             if (id <= 0)
             {
-                return BadRequest("Invalid movie ID.");
+                return BadRequest("ID inválido.");
             }
 
             var movie = await _movieService.GetMovieDetailsAsync(id);
             if (movie == null)
             {
-                return NotFound("Movie not found.");
+                return NotFound("Filme não encontrado.");
             }
 
             return Ok(movie);

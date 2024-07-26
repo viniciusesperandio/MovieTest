@@ -9,10 +9,6 @@ namespace MovieApp.Tests
 {
     public class MovieServiceTests : IDisposable
     {
-        //private readonly string _apiKey = "0b9039e8f36225ed42ba8522aaa2657d";
-
-        //private readonly string _baseUrl = "https://api.themoviedb.org/3";
-
         private readonly Mock<HttpMessageHandler> _httpMessageHandlerMock;
         private readonly HttpClient _httpClient;
         private readonly ILogger<MovieService> _loggerMock;
