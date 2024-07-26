@@ -61,6 +61,7 @@ Exemplo de Handler de Exceção
 
 ```csharp
 app.UseExceptionHandler(options => { });
+```
 
 Injeção de Dependências
 
@@ -75,6 +76,7 @@ builder.Services.AddHttpClient<IMovieService, MovieService>(client =>
 
     client.DefaultRequestHeaders.Add("Authorization", $"Bearer {builder.Configuration["ApiSettings:ApiToken"]}");
 });
+```
 
 Executando os Testes
 
