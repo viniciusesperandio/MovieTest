@@ -46,6 +46,7 @@ Iniciar a Aplicação
    dotnet run
 
    A aplicação estará disponível em http://localhost:5052
+   
    ou executando manualmente estará disponível em http://localhost:7112.
 
 Logging
@@ -58,6 +59,7 @@ Exceções são gerenciadas usando middleware de exceção no ASP.NET Core. O pr
 
 Exemplo de Handler de Exceção
 
+```csharp
 app.UseExceptionHandler(options => { });
 
 Injeção de Dependências
@@ -66,6 +68,7 @@ A aplicação utiliza a injeção de dependências do ASP.NET Core para gerencia
 
 Exemplo de Registro de Serviço
 
+```csharp
 builder.Services.AddHttpClient<IMovieService, MovieService>(client =>
 {
     client.BaseAddress = new Uri(builder.Configuration["ApiSettings:BaseUrl"]);
