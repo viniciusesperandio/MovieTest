@@ -45,7 +45,8 @@ Iniciar a Aplicação
 
    dotnet run
 
-   A aplicação estará disponível em http://localhost:7112.
+   A aplicação estará disponível em http://localhost:5052
+   ou executando manualmente estará disponível em http://localhost:7112.
 
 Logging
 
